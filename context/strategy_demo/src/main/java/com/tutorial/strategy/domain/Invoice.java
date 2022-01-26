@@ -1,6 +1,6 @@
 package com.tutorial.strategy.domain;
 
-import com.tutorial.strategy.payments.PaymentType;
+import com.tutorial.strategy.payments.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,10 +8,15 @@ import java.util.List;
 
 public class Invoice {
     private final List<InvoiceRow> rows;
-    private PaymentType paymentType;
+    private final PaymentType paymentType;
 
-    public Invoice() {
+    public Invoice(Payments payment) {
         rows = new ArrayList<>();
+        switch (payment) {
+            case CREDIT -> paymentType = new Credit();
+            case CHECK -> paymentType = new Check();
+            default -> paymentType = new Debit();
+        }
     }
 
     public void addItem(Item item1, int i) {

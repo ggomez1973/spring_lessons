@@ -2,11 +2,12 @@ package com.example.strategy.domain;
 
 import com.example.strategy.payments.PaymentType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class Invoice {
     private final List<InvoiceRow> rows;
     @Autowired

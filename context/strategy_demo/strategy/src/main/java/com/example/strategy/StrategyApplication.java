@@ -1,23 +1,20 @@
 package com.example.strategy;
 
-import com.example.strategy.config.InvoiceConfig;
 import com.example.strategy.domain.Invoice;
 import com.example.strategy.domain.Item;
-import com.example.strategy.payments.Debit;
-import com.example.strategy.payments.PaymentType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
 
 @SpringBootApplication
-@ComponentScan({"com.example.strategy.payments, com.example.strategy.domain"})
 public class StrategyApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(InvoiceConfig.class);
+		// ApplicationContext applicationContext = new AnnotationConfigApplicationContext(InvoiceConfig.class);
+		//ApplicationContext applicationContext = new ClassPathXmlApplicationContext("invoice-config.xml");
+		 ApplicationContext applicationContext = new ClassPathXmlApplicationContext("old-invoice-config.xml");
 		Invoice invoice = applicationContext.getBean(Invoice.class);
 		Item item1 = new Item("Birra copada", new BigDecimal("150.50"));
 		Item item2 = new Item("Whiskacho", new BigDecimal("34330.80"));

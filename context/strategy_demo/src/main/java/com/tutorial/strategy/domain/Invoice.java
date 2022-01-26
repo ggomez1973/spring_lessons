@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Invoice {
-    private final List<InvoiceRow> rows;
+    private List<InvoiceRow> rows;
     private PaymentType paymentType;
 
     public Invoice() {
         rows = new ArrayList<>();
+    }
+
+    public Invoice(PaymentType paymentType) {
+        this.paymentType = paymentType;
     }
 
     public void addItem(Item item1, int i) {

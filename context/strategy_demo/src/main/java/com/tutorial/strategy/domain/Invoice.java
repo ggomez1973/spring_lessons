@@ -8,10 +8,11 @@ import java.util.List;
 
 public class Invoice {
     private final List<InvoiceRow> rows;
-    private PaymentType paymentType;
+    private final PaymentType paymentType;
 
-    public Invoice() {
+    public Invoice(PaymentType paymentType) {
         rows = new ArrayList<>();
+        this.paymentType = paymentType;
     }
 
     public void addItem(Item item1, int i) {

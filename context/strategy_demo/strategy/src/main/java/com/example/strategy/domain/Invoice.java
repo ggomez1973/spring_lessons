@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-@Component
+//@Component
 public class Invoice {
     private final List<InvoiceRow> rows;
-    @Autowired
+    //@Autowired
     private PaymentType paymentType;
 
     public Invoice() {

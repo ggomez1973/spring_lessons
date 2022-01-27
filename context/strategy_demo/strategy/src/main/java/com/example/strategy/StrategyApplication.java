@@ -21,5 +21,8 @@ public class StrategyApplication {
 		invoice.addItem(item1, 14);
 		invoice.addItem(item2, 3);
 		System.out.println(invoice);
+		// Scope sample (ad UUID to invoice)
+		Invoice invoice2 = applicationContext.getBean(Invoice.class);
+		System.out.println(invoice2);
 	}
 }

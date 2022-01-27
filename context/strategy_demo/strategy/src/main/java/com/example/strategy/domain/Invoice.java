@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 //@Component
 public class Invoice {
+    // pirvate UUID id = UUID.randomUUID();
     private final List<InvoiceRow> rows;
     //@Autowired
     private PaymentType paymentType;

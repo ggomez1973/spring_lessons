@@ -3,6 +3,7 @@ package com.endava.reservations.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,9 +18,8 @@ public class Client {
     private final UUID id = UUID.randomUUID();
     private String firstName;
 
-    @OneToMany(mappedBy="client")
-    @JsonIgnore
-    private final List<Reservation> reservations = new ArrayList<>();
+ //   @OneToMany(mappedBy="client", cascade = CascadeType.MERGE)
+ //   private final List<Reservation> reservations = new ArrayList<>();
 
     public Client() {
     }
@@ -36,15 +36,8 @@ public class Client {
         return firstName;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void addReservation(Reservation reservation){
-        reservations.add(reservation);
-    }
 }

@@ -1,5 +1,6 @@
 package com.endava.reservations.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
@@ -51,5 +52,13 @@ public class Reservation {
 
     public LocalDate getToDate() {
         return toDate;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
     }
 }

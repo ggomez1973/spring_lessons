@@ -3,6 +3,7 @@ package com.endava.reservations.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -19,9 +20,8 @@ public class Apartment {
     private String description;
     private BigDecimal pricePerDay;
 
-    @OneToMany(mappedBy="apartment")
-    @JsonIgnore
-    private final List<Reservation> reservations = new ArrayList<>();
+//    @OneToMany(mappedBy="apartment", cascade = CascadeType.MERGE)
+//    private final List<Reservation> reservations = new ArrayList<>();
 
     public Apartment() {
     }
@@ -43,19 +43,11 @@ public class Apartment {
         return pricePerDay;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
     public void setPricePerDay(BigDecimal pricePerDay) {
         this.pricePerDay = pricePerDay;
-    }
-
-    public void addReservation(Reservation reservation){
-        reservations.add(reservation);
     }
 }

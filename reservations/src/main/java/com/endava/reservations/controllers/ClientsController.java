@@ -1,6 +1,7 @@
 package com.endava.reservations.controllers;
 
 import com.endava.reservations.domain.Client;
+import com.endava.reservations.services.ClientNotFoundException;
 import com.endava.reservations.services.ClientsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/api/v1.0/clients")
 public class ClientsController {
     private final ClientsService clientsService;
 
@@ -24,7 +25,12 @@ public class ClientsController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable UUID id){
-        return ResponseEntity.ok(clientsService.getClientById(id).get());
+        try {
+            Client client = clientsService.getClientById(id);
+            return ResponseEntity.ok(client);
+        } catch (ClientNotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping

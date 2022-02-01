@@ -20,8 +20,8 @@ public class DefaultClientsServiceImpl implements ClientsService {
     }
 
     @Override
-    public Optional<Client> getClientById(UUID id) {
-        return repository.findById(id);
+    public Client getClientById(UUID id) {
+        return repository.findById(id).orElseThrow(ClientNotFoundException::new);
     }
 
     @Override

@@ -1,15 +1,10 @@
 package com.endava.reservations.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -20,11 +15,7 @@ public class Apartment {
     private String description;
     private BigDecimal pricePerDay;
 
-//    @OneToMany(mappedBy="apartment", cascade = CascadeType.MERGE)
-//    private final List<Reservation> reservations = new ArrayList<>();
-
-    public Apartment() {
-    }
+    public Apartment() {    }
 
     public Apartment(String description, BigDecimal pricePerDay) {
         this.description = description;

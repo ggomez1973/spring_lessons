@@ -2,16 +2,20 @@ package com.example.strategy.domain;
 
 import com.example.strategy.payments.PaymentType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-//@Component
+import java.util.UUID;
+
+@Component
+
 public class Invoice {
-    // private UUID id = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
     private final List<InvoiceRow> rows;
-    //@Autowired
+    @Autowired
     private PaymentType paymentType;
 
     public Invoice() {
@@ -43,9 +47,9 @@ public class Invoice {
     @Override
     public String toString() {
         return "Invoice{" +
+                "id=" + id +
                 ", rows=" + rows +
                 ", paymentType=" + paymentType +
-                ", total=" + getTotal() +
                 '}';
     }
 }

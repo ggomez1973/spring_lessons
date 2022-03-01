@@ -8,6 +8,7 @@ import com.endava.reservations.persistance.ApartmentsRepository;
 import com.endava.reservations.persistance.ClientsRepository;
 import com.endava.reservations.persistance.ReservationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@Primary
 public class DefaultMainServiceImpl implements MainService {
     // @Autowired   // NOOO!!! Field Injection
     private ClientsRepository clientsRepository;
@@ -70,6 +72,7 @@ public class DefaultMainServiceImpl implements MainService {
 
     @Override
     public Reservation makeReservation(ReservationValueObject vo) {
+        // Reglas de negocio!!
         Client client = getClientById(vo.clientId);
         Apartment apartment = getApartmentById(vo.apartmentId);
         Reservation reservation = new Reservation(client, apartment, vo.fromDate, vo.toDate);

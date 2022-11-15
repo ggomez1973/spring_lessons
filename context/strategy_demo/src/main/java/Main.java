@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args){
+        System.out.println("Changes in dev");
         Item item1 = new Item("Birra copada", new BigDecimal("150.50"));
         Item item2 = new Item("Whiskacho", new BigDecimal("34330.80"));
         Invoice invoice = new Invoice();

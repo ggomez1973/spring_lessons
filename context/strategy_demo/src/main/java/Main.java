@@ -11,5 +11,6 @@ public class Main {
         invoice.addItem(item1, 14);
         invoice.addItem(item2, 3);
         System.out.println(invoice);
+        System.out.println("from dev change!");
     }
 }
